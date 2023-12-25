@@ -251,10 +251,15 @@ function getCube(num) {
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(index) {
+  if (index <= 0) {
+    return 0;
+  }
+  if (index <= 2) {
+    return 1;
+  }
+  return getFibonacciNumber(index - 1) + getFibonacciNumber(index - 2);
 }
-
 /**
  * Returns the sum of all numbers from 1 to n.
  *
@@ -266,8 +271,8 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  return ((1 + n) * n) / 2;
 }
 
 /**
@@ -371,7 +376,7 @@ function toFixed(number, fractionDigits) {
  * 12.345, 4   => '12.35'
  */
 function toPrecision(number, precision) {
-  number.toPrecision(precision);
+  return number.toPrecision(precision);
 }
 
 /**
@@ -433,7 +438,7 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  return parseFloat(str);
+  return Number.parseFloat(str);
 }
 
 /**
@@ -451,7 +456,7 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  return parseInt(str, base);
+  return Number.parseInt(str, base);
 }
 /**
  * Returns whether a number is a safe integer.
